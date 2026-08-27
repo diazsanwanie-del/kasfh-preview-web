@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-[#0B0F17] text-[#E2E8F0] dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KASFH — Quran Literal Lexicon Indonesia</title>
+  <link rel="icon" type="image/png" href="./assets/icon-web-kasfh.png">
+  <meta name="description" content="KASFH — Quran Literal Lexicon Indonesia. Jelajahi 77.429 kata Quran: Arab, transliterasi, akar, morfologi, dan literal Indonesia–English per token.">
+  <link rel="canonical" href="https://temporary-flying-neon-chgxmkz.vercel.app/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KASFH">
+  <meta property="og:title" content="KASFH — Quran Literal Lexicon Indonesia">
+  <meta property="og:description" content="Jelajahi 77.429 kata Quran: Arab, transliterasi, akar, morfologi, dan literal Indonesia–English per token.">
+  <meta property="og:url" content="https://temporary-flying-neon-chgxmkz.vercel.app/">
+  <meta property="og:image" content="https://temporary-flying-neon-chgxmkz.vercel.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KASFH — Quran Literal Lexicon Indonesia">
+  <meta name="twitter:description" content="Jelajahi 77.429 kata Quran: Arab, transliterasi, akar, morfologi, dan literal Indonesia–English per token.">
+  <meta name="twitter:image" content="https://temporary-flying-neon-chgxmkz.vercel.app/og-image.png">
+
+  <!-- Google Fonts: Arabic (Amiri & Scheherazade New) + UI (Plus Jakarta Sans) -->
+  
+  
+  
+
+  <!-- Tailwind CSS via CDN -->
+  
+
+  <link rel="stylesheet" href="./styles.945539b860474c2a.css">
+</head>
+<body class="min-h-screen text-slate-200 bg-[#0B0F17] flex flex-col font-sans selection:bg-brand-500/30 selection:text-white">
+
+  <!-- TOP HEADER (Dark Minimalist Professional) -->
+  <header class="bg-[#0F172A]/95 backdrop-blur-md text-white border-b border-slate-800 sticky top-0 z-30 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-18 gap-3">
+        
+        <!-- Logo & Product Name -->
+        <div class="flex items-center space-x-3 shrink-0">
+          <img src="./assets/icon-web-kasfh.png" alt="KASFH" class="w-9 h-9 rounded-xl shadow-md border border-blue-400/20 object-cover">
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="font-extrabold text-base sm:text-lg tracking-tight text-white flex items-center gap-1.5">
+                KASFH
+              </h1>
+              
+            </div>
+            <p id="ui-app-subtitle" class="text-xs text-slate-400 hidden md:block">Quran Literal Lexicon Indonesia</p>
+          </div>
+        </div>
+
+        <!-- Center / Right: Surah Selector & Language Toggle -->
+        <div class="flex items-center gap-2.5">
+
+          <!-- Language Selector Toggle [ ID | EN ] -->
+          <div class="flex items-center bg-[#182438] p-0.5 rounded-xl border border-slate-700/80 shadow-inner shrink-0">
+            <button id="lang-btn-id" onclick="setLanguage('ID')" class="px-2.5 py-1 rounded-lg text-xs font-extrabold transition duration-150 bg-blue-600 text-white shadow-sm">
+              ID
+            </button>
+            <button id="lang-btn-en" onclick="setLanguage('EN')" class="px-2.5 py-1 rounded-lg text-xs font-extrabold transition duration-150 text-slate-400 hover:text-slate-200">
+              EN
+            </button>
+          </div>
+
+          <!-- Surah Selector Navigator -->
+          <div class="flex items-center gap-1.5 bg-[#182438] px-2 sm:px-3 py-1.5 rounded-xl border border-slate-700/80 shadow-inner">
+            <!-- Prev Surah Button -->
+            <button id="btn-prev-surah" onclick="navigateSurah(-1)" title="Surah Sebelumnya (Arrow Up)" class="p-1.5 sm:px-2 sm:py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <span id="ui-btn-prev-surah" class="hidden sm:inline">Prev</span>
+            </button>
+
+            <!-- Dropdown Select 114 Surah -->
+            <div class="relative">
+              <select id="surah-select" onchange="onSurahSelectChange(this.value)" class="bg-[#0B0F17] text-white text-xs sm:text-sm font-semibold rounded-lg px-3 py-1.5 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 max-w-[150px] sm:max-w-[240px] md:max-w-[300px] truncate cursor-pointer">
+                <!-- Rendered via JS -->
+              </select>
+            </div>
+
+            <!-- Next Surah Button -->
+            <button id="btn-next-surah" onclick="navigateSurah(1)" title="Surah Berikutnya (Arrow Down)" class="p-1.5 sm:px-2 sm:py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-bold transition disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-1">
+              <span id="ui-btn-next-surah" class="hidden sm:inline">Next</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBHEADER / STATUS BAR (Dark) -->
+  <div class="bg-[#131C2E] border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 py-2.5 shadow-xs">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+      
+      <!-- Current Surah Meta Badges -->
+      <div class="flex items-center gap-2 text-slate-300 flex-wrap">
+        <span class="inline-flex items-center gap-1 text-emerald-400 font-semibold bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-800/60">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          <span id="ui-canonical-badge">QLM v3 Kanonikal</span>
+        </span>
+        <span class="text-slate-600">|</span>
+        <span id="meta-surah-info" class="font-bold text-white">
+          001. Al-Fatihah (الفاتحة)
+        </span>
+        <span class="text-slate-600">•</span>
+        <span id="meta-surah-type" class="px-2 py-0.2 rounded text-[11px] font-bold bg-amber-950/60 text-amber-300 border border-amber-800/60">
+          Makkiyah
+        </span>
+        <span class="text-slate-600">•</span>
+        <span id="meta-surah-ayahs-tokens" class="text-slate-400 font-medium">
+          7 Ayat · 29 Token
+        </span>
+      </div>
+
+      <!-- Quick Legend / POS Help (Dark Theme) -->
+      <div class="flex items-center gap-1.5 flex-wrap hidden md:flex">
+        <span id="ui-pos-legend-label" class="text-[11px] text-slate-400 mr-1 font-medium">Kelas Kata:</span>
+        <span id="ui-legend-pos-n" class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-blue-950/70 text-blue-300 border border-blue-800/50">N (Nomina)</span>
+        <span id="ui-legend-pos-pn" class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-purple-950/70 text-purple-300 border border-purple-800/50">PN (Nama Diri)</span>
+        <span id="ui-legend-pos-v" class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-800/50">V (Verba)</span>
+        <span id="ui-legend-pos-adj" class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-950/70 text-amber-300 border border-amber-800/50">ADJ (Sifat)</span>
+        <span id="ui-legend-pos-prep" class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-rose-950/70 text-rose-300 border border-rose-800/50">PREP (Harf)</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER (Dark Canvas) -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- ============================================================== -->
+      <!-- LEFT & CENTER: MAIN AYAH & WORD-BY-WORD VIEW                   -->
+      <!-- ============================================================== -->
+      <div class="lg:col-span-8 space-y-6">
+
+        <!-- CURRENT AYAH CARD (Dark Elevated Surface) -->
+        <section class="bg-[#131C2E] rounded-2xl border border-slate-800/90 shadow-xl overflow-hidden">
+          
+          <!-- Ayah Banner Header with Large Ayah Number & Custom Stepper -->
+          <div class="bg-[#182438] px-5 py-4 border-b border-slate-800 flex items-center justify-between flex-wrap gap-3">
+            
+            <!-- Left: Large Ayah Number + Down Arrow Dropdown Trigger -->
+            <div class="flex items-center gap-3.5">
+              
+              <!-- Large Ayah Number Display + Chevron Button -->
+              <div class="relative">
+                <button id="ayah-picker-btn" onclick="toggleAyahPicker()" title="Pilih Nomor Ayat" class="group flex items-center gap-2.5 bg-[#0B0F17] hover:bg-slate-900 border border-slate-700/80 hover:border-blue-500/60 rounded-2xl px-3.5 py-1.5 transition duration-150 shadow-inner">
+                  <div class="flex flex-col items-start">
+                    <span id="ui-ayah-label-big" class="text-[9px] font-extrabold uppercase tracking-widest text-blue-400 font-mono">AYAT</span>
+                    <span id="big-ayah-number" class="text-2xl sm:text-3xl font-extrabold font-mono text-white leading-none tracking-tight">
+                      1
+                    </span>
+                  </div>
+                  <!-- Arrow Down Glyph (Chevron Down) -->
+                  <div class="w-6 h-6 rounded-lg bg-slate-800 group-hover:bg-blue-600 text-slate-300 group-hover:text-white flex items-center justify-center transition">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                  </div>
+                </button>
+
+                <!-- Ayah Picker Grid Dropdown Modal (Dynamic) -->
+                <div id="ayah-picker-dropdown" class="hidden absolute top-full left-0 mt-2 w-72 sm:w-80 bg-[#182438] border border-slate-700 rounded-2xl shadow-2xl z-50 p-4 max-h-72 overflow-y-auto">
+                  <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-700/80 text-xs font-bold text-slate-300">
+                    <span id="ui-picker-title">Pilih Nomor Ayat</span>
+                    <span id="picker-surah-name" class="text-blue-400 font-medium">Al-Fatihah</span>
+                  </div>
+                  <div id="ayah-picker-grid" class="grid grid-cols-5 sm:grid-cols-6 gap-2">
+                    <!-- Rendered dynamically -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Surah & Ayah Title Info -->
+              <div>
+                <span id="ayah-badge" class="px-2.5 py-0.5 rounded-md bg-blue-950/80 text-blue-300 font-bold text-xs border border-blue-800/60 font-mono">
+                  QS 1:1
+                </span>
+                <h2 class="text-sm font-bold text-white mt-1" id="ayah-title">
+                  Surah Al-Fatihah — Ayat 1
+                </h2>
+              </div>
+
+            </div>
+            
+            <!-- Right: Custom Sleek Stepper (Down Arrow = Increases Ayah Number) -->
+            <div class="flex items-center gap-3">
+              
+              
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">Nomor Ayat:</span>
+              <input id="ayah-jump-input" type="number" min="1" class="w-12 bg-[#0B0F17] border border-slate-700/80 rounded-lg px-1.5 py-1 text-xs text-white text-center focus:outline-none focus:ring-1 focus:ring-blue-500/50" onchange="jumpToAyahInput()" onfocus="this.select()">
+              <button onclick="stepAyah(-1)" class="w-6 h-6 flex items-center justify-center bg-slate-800 hover:bg-slate-700 border border-slate-700/80 hover:border-blue-500/60 rounded-lg text-slate-400 hover:text-white transition text-xs" aria-label="Ayah sebelumnya">▲</button>
+              <button onclick="stepAyah(1)" class="w-6 h-6 flex items-center justify-center bg-slate-800 hover:bg-slate-700 border border-slate-700/80 hover:border-blue-500/60 rounded-lg text-slate-400 hover:text-white transition text-xs" aria-label="Ayah berikutnya">▼</button>
+
+              <!-- Word Count Badge -->
+              <span id="ayah-token-count" class="bg-slate-800 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-300 border border-slate-700/80">
+                4 Kata
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Full Ayah Arabic Text (Native Inline RTL Flow - Fixes An-Nisa 4:1) -->
+          <div class="p-6 sm:p-8 bg-gradient-to-b from-[#182438]/50 to-[#131C2E]">
+            <div class="text-slate-400 text-xs font-semibold tracking-wider mb-4 flex items-center justify-between">
+              <span id="ui-full-ayah-header">TEKS AYAT LENGKAP (INTERAKTIF)</span>
+              <span id="ui-rtl-mode-tag" class="text-[11px] bg-blue-950/70 text-blue-300 border border-blue-800/50 px-2 py-0.5 rounded font-mono font-medium">Mode RTL</span>
+            </div>
+
+            <!-- Ayah Sentence Container (Native inline RTL sentence flow) -->
+            <div id="full-ayah-container" dir="rtl" class="arabic-sentence text-3xl sm:text-4xl lg:text-[38px] font-arabic text-white py-2">
+              <!-- Rendered dynamically as native inline Arabic tokens -->
+            </div>
+
+            <!-- Context Translation Box (Supports ID / EN) -->
+            <div class="mt-6 pt-5 border-t border-slate-800/80 flex items-start gap-3">
+              <span class="text-blue-400 mt-0.5 shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span id="ayah-trans-label" class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Terjemahan Konteks Ayat:
+                  </span>
+                  <span id="ayah-trans-lang-tag" class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                    ID
+                  </span>
+                </div>
+                <p id="ayah-translation-text" class="text-sm font-medium text-slate-200 mt-1 italic leading-relaxed">
+                  "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WORD-BY-WORD CARDS (Dark Grid View) -->
+        <section class="bg-[#131C2E] rounded-2xl border border-slate-800/90 shadow-xl p-5 sm:p-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div>
+              <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <span id="ui-wbw-title">Analisis Kata-per-Kata</span>
+                <span id="ui-wbw-subtitle" class="text-xs font-normal normal-case text-slate-400">(Word-by-Word Matrix)</span>
+              </h2>
+              <p id="ui-wbw-instruction" class="text-xs text-slate-400 mt-0.5">Pilih salah satu kartu untuk meninjau profil linguistik lengkap di sidebar kanan</p>
+            </div>
+            <div id="ui-wbw-seq" class="text-xs font-medium text-slate-400">
+              Urutan posisi kata dalam ayat
+            </div>
+          </div>
+
+          <!-- Cards Grid -->
+          <div id="word-cards-grid" class="grid gap-3.5" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </section>
+
+      </div>
+
+
+      <!-- ============================================================== -->
+      <!-- RIGHT: DETAIL LINGUISTIC PROFILE (Fixed Multi-lingual Detail)  -->
+      <!-- ============================================================== -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-24 space-y-4">
+        
+        <div class="bg-[#131C2E] rounded-2xl border border-slate-800/90 shadow-xl overflow-hidden">
+          
+          <!-- Detail Panel Header -->
+          <div class="bg-[#182438] text-white px-5 py-3.5 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <h3 id="ui-sidebar-title" class="font-bold text-sm tracking-wide text-white">Profil Linguistik Lengkap</h3>
+            </div>
+            <span id="detail-ref-badge" class="px-2 py-0.5 rounded bg-[#0B0F17] text-[11px] font-mono font-semibold text-blue-300 border border-slate-700">
+              001:01:01
+            </span>
+          </div>
+
+          <div class="p-5 space-y-5">
+
+            <!-- Arabic Hero Box (Dark) -->
+            <div class="bg-gradient-to-b from-[#182438] to-[#111827] rounded-xl p-5 border border-slate-700/80 text-center relative overflow-hidden shadow-inner">
+              <div id="ui-active-token-label" class="text-[10px] uppercase font-bold tracking-widest text-slate-400 mb-1">
+                Token Aktif (RTL)
+              </div>
+              <div id="detail-arabic" class="arabic-text text-4xl sm:text-5xl font-arabic font-bold text-white my-2.5 drop-shadow-md">
+                بِسْمِ
+              </div>
+              <div id="detail-translit" class="text-sm font-mono font-medium text-blue-300 bg-[#0B0F17] inline-block px-3 py-1 rounded-full border border-slate-700 shadow-sm">
+                bis'mi
+              </div>
+            </div>
+
+            <!-- Literal & AI Translations Breakdown (Both Languages Preserved) -->
+            <div class="space-y-2.5">
+              <h4 id="ui-trans-section-title" class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Terjemahan Literal & AI
+              </h4>
+
+              <!-- Indonesian Literal -->
+              <div class="bg-blue-950/40 border border-blue-800/60 rounded-xl p-3">
+                <div class="flex items-center justify-between text-[11px] font-bold text-blue-300 mb-0.5">
+                  <span class="flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <span id="ui-lit-id-title">Literal Indonesia (QLLI)</span>
+                  </span>
+                  <span id="ui-lit-id-badge" class="text-[10px] bg-blue-900/80 text-blue-200 px-1.5 py-0.2 rounded font-semibold border border-blue-700/50">Utama</span>
+                </div>
+                <div id="detail-id-literal" class="text-base font-extrabold text-white">
+                  dengan nama
+                </div>
+              </div>
+
+              <!-- English Literal -->
+              <div class="bg-[#182438] border border-slate-700/80 rounded-xl p-3">
+                <div class="text-[11px] font-bold text-slate-400 mb-0.5 flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                  <span id="ui-lit-en-title">Literal English</span>
+                </div>
+                <div id="detail-en-literal" class="text-sm font-semibold text-slate-200">
+                  In (the) name
+                </div>
+              </div>
+
+              <!-- AI Finishing Output -->
+              <div class="bg-emerald-950/40 border border-emerald-800/60 rounded-xl p-3">
+                <div class="flex items-center justify-between text-[11px] font-bold text-emerald-300 mb-0.5">
+                  <span class="flex items-center gap-1">
+                    <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span id="ui-ai-output-title">AI Finishing Output</span>
+                  </span>
+                  <span id="detail-ai-model-tag" class="hidden text-[10px] bg-emerald-900/80 text-emerald-200 px-1.5 py-0.2 rounded font-mono border border-emerald-700/50">
+                    —
+                  </span>
+                </div>
+                <div id="detail-ai-output" class="text-sm font-bold text-white">
+                  dengan nama
+                </div>
+              <p class="italic text-[10px] text-slate-400 mt-1.5 leading-snug">Catatan: hasil generate oleh AI berdasarkan literal Indonesia &amp; English sebagai pembanding untuk memperoleh kata literal.</p>
+              </div>
+            </div>
+
+            <!-- Grammatical / Morphological Specs (Dark Mode) -->
+            <div class="space-y-2.5">
+              <h4 id="ui-morph-section-title" class="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Morfologi & Tata Bahasa
+              </h4>
+              
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <!-- POS -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-pos-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Part of Speech</span>
+                  <span id="detail-pos" class="font-bold text-white text-sm">Noun (N)</span>
+                </div>
+                <!-- Root -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-root-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Root (Akar Kata)</span>
+                  <span id="detail-root" class="font-bold text-blue-400 font-mono text-sm">smw</span>
+                </div>
+                <!-- Lemma -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-lemma-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Lemma</span>
+                  <span id="detail-lemma" class="font-bold text-slate-200 font-mono text-xs truncate block">-</span>
+                </div>
+                <!-- State / I'rab -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-state-prop" class="text-[10px] font-bold uppercase text-slate-400 block">State (I'rab)</span>
+                  <span id="detail-state" class="font-bold text-purple-400 text-xs">GEN (Majrur)</span>
+                </div>
+                <!-- Gender -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-gender-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Gender</span>
+                  <span id="detail-gender" class="font-semibold text-slate-200">M (Mudzakkar)</span>
+                </div>
+                <!-- Number -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80">
+                  <span id="ui-number-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Number</span>
+                  <span id="detail-number" class="font-semibold text-slate-200">Singular</span>
+                </div>
+                <!-- Aspect / Mood / Voice (Combined) -->
+                <div class="p-2.5 rounded-lg bg-[#182438] border border-slate-700/80 col-span-2">
+                  <span id="ui-verb-prop" class="text-[10px] font-bold uppercase text-slate-400 block">Verb Features (Aspect / Voice / Mood)</span>
+                  <span id="detail-verb-features" class="font-medium text-slate-300 text-xs">-</span>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- BOTTOM FIXED NAVIGATION BAR (Compact — Figma Review v1)       -->
+  <!-- ============================================================== -->
+  <nav class="fixed bottom-0 inset-x-0 bg-[#0F172A]/95 backdrop-blur-md border-t border-slate-800 shadow-2xl z-40 py-2 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Prev Ayah Button -->
+      <button id="btn-prev-ayah" onclick="navigateAyah(-1)" title="Ayat Sebelumnya (Arrow Left)" class="px-4 py-2 rounded-xl text-sm font-bold border border-slate-700 text-slate-200 bg-[#182438] hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition flex items-center gap-1.5 shadow-sm shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        <span id="ui-btn-prev-ayah" class="hidden sm:inline">Prev Ayat</span>
+      </button>
+
+      <!-- Center: Ayah Counter -->
+      <div class="flex items-center gap-2 text-sm font-mono">
+        <span id="bottom-ayah-current" class="text-white font-bold">1</span>
+        <span class="text-slate-500">/</span>
+        <span id="bottom-ayah-total" class="text-slate-400 font-semibold">7</span>
+      </div>
+
+      <!-- Next Ayah Button -->
+      <button id="btn-next-ayah" onclick="navigateAyah(1)" title="Ayat Berikutnya (Arrow Right)" class="px-4 py-2 rounded-xl text-sm font-bold border border-slate-700 text-slate-200 bg-[#182438] hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition flex items-center gap-1.5 shadow-sm shrink-0">
+        <span id="ui-btn-next-ayah" class="hidden sm:inline">Next Ayat</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- DISCLAIMER SINGLE LINE (Owner decision: FINAL:7 override) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
+    <p class="text-[11px] text-slate-500 leading-relaxed">Terjemahan literal untuk studi linguistik — bukan terjemahan resmi Kementerian Agama RI.</p>
+  </div>
+
+  <!-- FOOTER WATERMARK (M3, FINAL:7, ratified footer) -->
+  <footer class="mt-8 border-t border-slate-800 bg-[#0F172A]/60 backdrop-blur-sm" style="margin-bottom:5rem">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+        <div class="text-center sm:text-left">
+          <div class="font-bold text-slate-300">© KASFH - AOS Studio</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">KASFH — Multilayer Lexicon &amp; Word-by-Word Explorer · Powered by QLLI · An independent project by AOS Studio · © 2026 AOS Studio. All rights reserved.</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="#" onclick="document.getElementById('tou-modal').classList.remove('hidden'); return false;" class="text-blue-400 hover:text-blue-300 font-semibold">Terms of Use</a>
+          <span class="text-slate-600">|</span>
+          <a href="#" onclick="document.getElementById('about-modal').classList.remove('hidden'); return false;" class="text-blue-400 hover:text-blue-300 font-semibold">About</a>
+          <span class="text-slate-600">|</span>
+          <a href="https://www.patreon.com/c/dwiasmoro" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-300">Patreon</a>
+          <a href="https://saweria.co/dwiasmoro" target="_blank" rel="noopener" class="text-slate-400 hover:text-slate-300">Saweria</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- TERMS OF USE MODAL (M3, FINAL:7, bilingual) -->
+  <div id="tou-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="if(event.target===this) this.classList.add('hidden')">
+    <div class="bg-[#131C2E] border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl">
+      <div class="sticky top-0 bg-[#182438] border-b border-slate-700 px-6 py-4 flex items-center justify-between">
+        <h2 class="font-bold text-white">Terms of Use / Syarat Penggunaan</h2>
+        <button onclick="document.getElementById('tou-modal').classList.add('hidden')" class="text-slate-400 hover:text-white p-1">✕</button>
+      </div>
+      <div class="px-6 py-5 space-y-5 text-xs leading-relaxed">
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Bahasa Indonesia</h3>
+          <ol class="list-decimal list-inside space-y-1 text-slate-300">
+            <li>KASFH adalah explorer leksikon literal Quran untuk studi linguistik Arab.</li>
+            <li>Data adalah proyeksi publik turunan matrix kanonik QLLI; bukan salinan master DB.</li>
+            <li>Atribusi “© KASFH - AOS Studio”; dilarang hapus watermark/samar identitas.</li>
+            <li>Diperbolehkan untuk studi pribadi &amp; edukasi; redistribusi komersial atau ekstraksi dataset internal (termasuk field terjemahan mentah) dilarang.</li>
+            <li>Literal bukan terjemahan resmi Kemenag RI; pengguna patuhi ketentuan setempat.</li>
+          </ol>
+        </div>
+        <div class="pt-3 border-t border-slate-700/60">
+          <h3 class="font-bold text-blue-300 mb-1">English</h3>
+          <ol class="list-decimal list-inside space-y-1 text-slate-300">
+            <li>KASFH is a Quranic literal lexicon explorer for Arabic linguistic study.</li>
+            <li>Displayed data is a public projection derived from canonical QLLI matrix; not a copy of master DB.</li>
+            <li>Attribution “© KASFH - AOS Studio”; do not remove watermark or misrepresent ownership.</li>
+            <li>Permitted for personal/educational study; commercial redistribution or extraction of internal datasets (incl. raw translation fields) prohibited.</li>
+            <li>Literal translation is not an official Ministry of Religious Affairs translation; users comply with local regulations.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- ABOUT MODAL -->
+  <div id="about-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" onclick="if(event.target===this) this.classList.add('hidden')">
+    <div class="bg-[#131C2E] border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl">
+      <div class="sticky top-0 bg-[#182438] border-b border-slate-700 px-6 py-4 flex items-center justify-between">
+        <h2 class="font-bold text-white">About KASFH</h2>
+        <button onclick="document.getElementById('about-modal').classList.add('hidden')" class="text-slate-400 hover:text-white p-1">✕</button>
+      </div>
+      <div class="px-6 py-5 space-y-5 text-xs leading-relaxed text-slate-300">
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Apa itu KASFH?</h3>
+          <p>KASFH adalah penjelajah Al-Qur’an yang membantu melihat kata-kata Al-Qur’an secara lebih dekat, termasuk makna literal dan informasi leksikal yang menyertainya. KASFH merupakan cara publik untuk menjelajahi data Quran Literal Lexicon Indonesia (QLLI).</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Apa itu QLLI?</h3>
+          <p>QLLI adalah sebuah leksikon Al-Qur’an berbahasa Indonesia yang dibangun untuk menyusun dan menghubungkan informasi leksikal pada tingkat kata secara terstruktur. QLLI dibuat untuk membantu mempelajari kata-kata Al-Qur’an melalui bentuk kata, informasi leksikal, dan terjemahan literalnya.</p>
+          <p class="mt-2">QLLI menjadi dasar bagi dua bentuk penggunaan: satu dataset terstruktur yang digunakan oleh mesin, dan KASFH, sebagai cara manusia menjelajahi data tersebut.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Bagaimana KASFH menggunakan data tersebut?</h3>
+          <p>KASFH menyajikan data QLLI dalam bentuk yang dapat dijelajahi langsung di web. Data yang ditampilkan KASFH merupakan proyeksi publik dari dataset tersebut. KASFH tidak membuat sumber data tersendiri, melainkan menyajikan data yang berasal dari dataset tersebut.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Data &amp; Metodologi</h3>
+          <p>Data KASFH dibangun secara deterministik dari dataset terstruktur v3 yang mencakup 77.429 token Al-Qur’an. Hanya informasi yang diperuntukkan bagi publik yang ditampilkan. Setiap pembaruan melewati pemeriksaan otomatis, termasuk verifikasi SHA-256 dan pemeriksaan untuk memastikan tidak ada informasi internal yang ikut dipublikasikan.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-blue-300 mb-1">Keterbatasan</h3>
+          <p>Terjemahan literal dalam KASFH ditujukan untuk studi linguistik, bukan sebagai terjemahan resmi Kementerian Agama Republik Indonesia.</p>
+          <p class="mt-2 text-slate-400 italic">Literal translation is provided for linguistic study only and is not an official translation of the Ministry of Religious Affairs of the Republic of Indonesia.</p>
+          <p class="mt-2">Beberapa kata mungkin belum memiliki informasi akar atau lemma dan ditampilkan sebagai —. Pencarian pada tingkat kata direncanakan untuk pengembangan berikutnya.</p>
+        </div>
+        <div class="pt-3 border-t border-slate-700/60">
+          <h3 class="font-bold text-blue-300 mb-1">Kredit</h3>
+          <p>© KASFH — AOS Studio · Powered by QLLI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for Copy -->
+  <div id="toast" class="fixed top-20 right-6 bg-slate-800 text-white border border-slate-700 text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl transition-opacity duration-200 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+    <span id="ui-toast-msg">Literal ID disalin ke clipboard!</span>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- INLINE DATA & APPLICATION CORE (114 SURAH)                     -->
+  <!-- ============================================================== -->
+  <script src="./app.bed358b58932ed08.js"></script>
+</body>
+</html>

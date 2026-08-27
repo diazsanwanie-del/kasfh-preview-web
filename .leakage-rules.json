@@ -1,0 +1,74 @@
+{
+  "version": "kasfh-leakage-1.0",
+  "enforce_source_canonical": true,
+  "canonical_source": "qlm_v3_canonical_matrix.json",
+  "canonical_sha256": "<PINNED_FROM_qlm_v3_projection_manifest.json_at_build>",
+  "schema_whitelist_only": true,
+  "public_schema": {
+    "token": [
+      "a",
+      "t",
+      "r",
+      "rt",
+      "lm",
+      "p",
+      "m",
+      "id",
+      "en",
+      "ref"
+    ],
+    "morph_subkeys": [
+      "as",
+      "vc",
+      "md",
+      "g",
+      "n",
+      "st",
+      "pe"
+    ],
+    "surah_meta": [
+      "s",
+      "ni",
+      "na",
+      "ay",
+      "pl"
+    ]
+  },
+  "forbidden_patterns": [
+    "cmu_id",
+    "sense_id",
+    "literal_id",
+    "ai_model",
+    "ai_version",
+    "ai_output",
+    "token_index",
+    "SRC-ID-",
+    "terjemahan_id",
+    "PROJECT_QLLI",
+    "api_key",
+    "C:\\\\",
+    "CMU-",
+    "SENSE-",
+    "LIT-",
+    "gemini-",
+    "copyLiteralId"
+  ],
+  "forbidden_pattern_flags": "word_boundary",
+  "entropy_scan": true,
+  "entropy_scope": "json_non_gloss_string_values",
+  "entropy_threshold": 4.2,
+  "rebuild_diff_gate": true,
+  "baseline_manifest": "dist/.leakage_baseline.sha256",
+  "scan_globs": [
+    "dist/**/*.html",
+    "dist/**/*.js",
+    "dist/**/*.css",
+    "dist/**/*.json"
+  ],
+  "exclude_globs": [
+    "dist/**/*.woff2",
+    "dist/**/*.png",
+    "dist/**/*.ico"
+  ],
+  "on_violation": "fail_build_nonzero_exit"
+}

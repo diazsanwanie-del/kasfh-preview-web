@@ -1,0 +1,11 @@
+{
+  "product": "KASFH",
+  "milestone": "M1",
+  "schema": "kasfh-1.0",
+  "version_dir": "v1",
+  "canonical_source": "qlm_v3_canonical_matrix.json",
+  "canonical_sha256": "b7516082190e9c637984deb56dc925f0a7e71d9d0effb3b99b0d961dd304855d",
+  "source_row_count": 77429,
+  "data_surah_files": 114,
+  "note": "Human/rollback reference only. NOT used for cache busting."
+}
